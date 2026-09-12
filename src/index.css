@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #0a0e10;
+}
+
+::selection {
+  background: rgba(95, 203, 141, 0.3);
+  color: #edede8;
+}
+
+:focus-visible {
+  outline: 2px solid #4fe3d6;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reusable component-level utility classes */
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-wrap px-6;
+  }
+  .eyebrow {
+    @apply font-mono text-xs tracking-wide text-text-dim;
+  }
+  .glass-card {
+    @apply rounded-xl border border-border bg-surface/80 backdrop-blur-sm;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[0.7rem] font-semibold tracking-wide;
+  }
+  .badge-pass {
+    @apply border-pass/35 bg-pass-bg text-pass;
+  }
+  .badge-wip {
+    @apply border-wip/35 bg-wip-bg text-wip;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-sm transition-all duration-200 hover:-translate-y-0.5;
+  }
+  .btn-primary {
+    @apply border-pass bg-pass font-semibold text-[#0a120e] hover:bg-[#70d69b];
+  }
+  .btn-ghost {
+    @apply bg-transparent text-text hover:border-accent hover:text-accent;
+  }
+}
+
+/* Subtle animated grid background used behind the hero + section transitions */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(95, 203, 141, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(95, 203, 141, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #5fcb8d, #4fe3d6 50%, #6e8cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom cursor (desktop only, JS toggles a class on <html>) */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #4fe3d6;
+}
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(79, 227, 214, 0.5);
+  transition: width 0.18s ease, height 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+html.cursor-active,
+html.cursor-active * {
+  cursor: none !important;
+}
+html.cursor-hover .cursor-ring {
+  width: 50px;
+  height: 50px;
+  background: rgba(79, 227, 214, 0.08);
+  border-color: #4fe3d6;
+}

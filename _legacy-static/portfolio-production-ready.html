@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Divyanshu Sharma — Portfolio</title>
+
+<meta name="description" content="Portfolio of Divyanshu Sharma — MCA graduate, QA engineer, and aspiring GenAI backend developer based in Meerut, India.">
+<meta name="theme-color" content="#12181B">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Divyanshu Sharma — Portfolio">
+<meta property="og:description" content="Portfolio of Divyanshu Sharma — QA engineer and aspiring GenAI backend developer.">
+<meta property="og:url" content="https://divyanshusha.github.io/portfolio/">
+<meta property="og:site_name" content="Divyanshu Sharma — Portfolio">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Divyanshu Sharma — Portfolio">
+<meta name="twitter:description" content="Portfolio of Divyanshu Sharma — QA engineer and aspiring GenAI backend developer.">
+<link rel="canonical" href="https://divyanshusha.github.io/portfolio/">
+
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2312181B'/%3E%3Ctext x='50' y='66' font-size='50' text-anchor='middle' fill='%235FCB8D' font-family='monospace'%3E%3E_%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="nav-brand">Divyanshu<span>_</span>Sharma</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#Experience">Experience</a></li>
+      <li><a href="#Projects">Projects</a></li>
+      <li><a href="#Contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="nav-status" aria-label="Current availability: open to work"><span class="dot" aria-hidden="true"></span> open_to_work</div>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Who am I?</span>
+      <h1 class="editable" contenteditable="false" data-field="name"></h1>
+      <div class="hero-typed"><span class="editable" contenteditable="false" data-field="heroLine"></span><span class="caret" aria-hidden="true"></span></div>
+      <p class="sub editable" contenteditable="false" data-field="tagline"></p>
+      <div class="cta-row">
+        <a href="" id="resumeBtn" class="btn btn-primary" hidden>View résumé ↗</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch →</a>
+      </div>
+      <div class="meta-row">
+        <span>📍 <span class="editable" contenteditable="false" data-field="location"></span></span>
+        <span>🎓 <span class="editable" contenteditable="false" data-field="education"></span></span>
+        <span>🟢 <span class="editable" contenteditable="false" data-field="status"></span></span>
+      </div>
+    </div>
+    <div class="photo-frame" id="photoFrame" role="button" tabindex="0" aria-label="Set profile photo in edit mode" title="Click to set photo (edit mode)">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+      <span class="placeholder-text">Add photo</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow" style="margin:0;">&gt;</span>
+      <h2>About</h2>
+      <span class="badge badge-pass">✓ PASS</span>
+    </div>
+    <div class="card about-card">
+      <p class="editable" contenteditable="false" data-field="about"></p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow" style="margin:0;">&gt; </span>
+      <h2>Skills</h2>
+      <span class="badge badge-pass">✓ PASS</span>
+    </div>
+    <div id="skillsContainer"></div>
+    <button type="button" class="add-btn edit-only" id="addSkillGroupBtn" style="margin-top:18px;">+ add category</button>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow" style="margin:0;">&gt; </span>
+      <h2>Experience</h2>
+      <span class="badge badge-pass">✓ PASS</span>
+    </div>
+    <div class="exp-list" id="expContainer"></div>
+    <button type="button" class="add-btn edit-only" id="addExpBtn" style="margin-top:16px;">+ add role</button>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow" style="margin:0;">&gt; </span>
+      <h2>Projects</h2>
+      <span class="badge badge-pass">✓ PASS</span>
+    </div>
+    <div class="project-grid" id="projectsContainer"></div>
+    <button type="button" class="add-btn edit-only" id="addProjectBtn" style="margin-top:16px;">+ add project</button>
+    <div class="utility-row">
+      <span>Also built:</span>
+      <div id="utilityContainer" style="display:contents;"></div>
+      <button type="button" class="add-btn edit-only" id="addUtilityBtn">+ add link</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow" style="margin:0;">&gt; </span>
+      <h2>Let's talk</h2>
+      <span class="badge badge-pass">✓ PASS</span>
+    </div>
+    <div class="card contact-card">
+      <p class="contact-lead editable" contenteditable="false" data-field="contactLead"></p>
+      <div class="contact-grid" id="contactLinksContainer"></div>
+      <button type="button" class="add-btn edit-only" id="addContactLinkBtn" style="align-self:flex-start;">+ add contact link</button>
+      <div class="contact-location">📍 <span class="editable" contenteditable="false" data-field="location"></span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 <span id="footerName"></span> — built with care</div>
+  <div class="status-line">status: open_to_work = true</div>
+  <div style="margin-top:6px;">Edits save automatically in this browser.</div>
+</footer>
+
+<div class="edit-fab-row">
+  <div class="edit-fab-hint edit-only">Click any text to edit. Use + / ✕ to add or remove items.</div>
+  <span class="save-status" id="saveStatus" role="status" aria-live="polite"></span>
+  <div class="edit-fab-btns">
+    <button type="button" class="edit-fab-btn ghost edit-only" id="resetBtn">↺ Reset</button>
+    <button type="button" class="edit-fab-btn primary" id="editToggle" aria-pressed="false" aria-label="Toggle portfolio edit mode">✏️ Edit page</button>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
