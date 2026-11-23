@@ -21,67 +21,73 @@ html {
 }
 
 body {
-  background-color: #0a0e10;
+  background-color: #05030A;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
 }
 
 ::selection {
-  background: rgba(95, 203, 141, 0.3);
-  color: #edede8;
+  background: rgba(139,92,246,0.4);
+  color: #FFFFFF;
 }
 
 :focus-visible {
-  outline: 2px solid #4fe3d6;
+  outline: 2px solid #8B5CF6;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Reusable component-level utility classes */
+/* Reusable component-level utility classes for dark purple theme */
 @layer components {
   .wrap {
     @apply mx-auto max-w-wrap px-6;
   }
   .eyebrow {
-    @apply font-mono text-xs tracking-wide text-text-dim;
+    @apply font-mono text-xs font-semibold tracking-wider text-accent uppercase;
   }
   .glass-card {
-    @apply rounded-xl border border-border bg-surface/80 backdrop-blur-sm;
+    @apply rounded-2xl border border-border bg-surface/80 backdrop-blur-md p-8 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(139,92,246,0.15)] hover:-translate-y-1;
   }
   .badge {
-    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[0.7rem] font-semibold tracking-wide;
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-xs font-medium tracking-wide;
   }
   .badge-pass {
-    @apply border-pass/35 bg-pass-bg text-pass;
+    @apply border-pass/30 bg-pass/10 text-pass;
   }
   .badge-wip {
-    @apply border-wip/35 bg-wip-bg text-wip;
+    @apply border-wip/30 bg-wip/10 text-wip;
   }
   .btn {
-    @apply inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-sm transition-all duration-200 hover:-translate-y-0.5;
+    @apply inline-flex items-center gap-2 rounded-xl border px-6 py-3 font-mono text-sm font-medium transition-all duration-200;
   }
   .btn-primary {
-    @apply border-pass bg-pass font-semibold text-[#0a120e] hover:bg-[#70d69b];
+    @apply border-transparent bg-gradient-to-r from-accent via-electric to-pass bg-[length:200%_100%] text-white hover:bg-[position:100%_0] hover:bg-[length:100%_100%] hover:shadow-[0_0_24px_rgba(139,92,246,0.45)];
   }
   .btn-ghost {
-    @apply bg-transparent text-text hover:border-accent hover:text-accent;
+    @apply bg-transparent text-white/80 border-border hover:border-accent hover:text-white hover:bg-accent/10;
   }
 }
 
-/* Subtle animated grid background used behind the hero + section transitions */
+/* Animated starry background */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(95, 203, 141, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(95, 203, 141, 0.06) 1px, transparent 1px);
-  background-size: 44px 44px;
+    radial-gradient(rgba(139,92,246,0.2) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Floating purple gradient shapes */
+.orb {
+  @apply pointer-events-none absolute rounded-full blur-[120px] opacity-50;
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #5fcb8d, #4fe3d6 50%, #6e8cff);
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #C084FC 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Custom cursor (desktop only, JS toggles a class on <html>) */
+/* Custom cursor */
 .cursor-dot,
 .cursor-ring {
   position: fixed;
@@ -96,12 +102,12 @@ body {
 .cursor-dot {
   width: 6px;
   height: 6px;
-  background: #4fe3d6;
+  background: #EC4899;
 }
 .cursor-ring {
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(79, 227, 214, 0.5);
+  border: 1px solid rgba(139,92,246,0.6);
   transition: width 0.18s ease, height 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 html.cursor-active,
@@ -109,8 +115,8 @@ html.cursor-active * {
   cursor: none !important;
 }
 html.cursor-hover .cursor-ring {
-  width: 50px;
-  height: 50px;
-  background: rgba(79, 227, 214, 0.08);
-  border-color: #4fe3d6;
+  width: 48px;
+  height: 48px;
+  background: rgba(139,92,246,0.08);
+  border-color: #8B5CF6;
 }

@@ -3,22 +3,22 @@ import { Menu, X } from 'lucide-react';
 import { portfolio } from '../data/portfolio';
 
 const LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
+  { href: '#top', label: 'Home' },
+  { href: '#about', label: 'About Me' },
   { href: '#projects', label: 'Projects' },
-  { href: '#education', label: 'Education' },
+  { href: '#skills', label: 'Technical Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education & Certifications' },
   { href: '#contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState('');
-  const menuRef = useRef(null);
+  const [active, setActive] = useState('#top');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -33,7 +33,7 @@ export default function Navbar() {
           if (entry.isIntersecting) setActive('#' + entry.target.id);
         });
       },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      { rootMargin: '-10% 0px -75% 0px', threshold: 0 }
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
@@ -50,13 +50,15 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full border-b transition-colors duration-300 ${
-        scrolled ? 'border-border bg-bg/85 backdrop-blur-md' : 'border-transparent bg-transparent'
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? 'bg-bg/80 backdrop-blur-md border-b border-border'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="wrap flex h-16 items-center justify-between">
-        <a href="#top" className="font-mono text-sm font-semibold text-text">
-          Divyanshu<span className="text-pass">_</span>Sharma
+        <a href="#top" className="font-display text-sm font-semibold text-white tracking-tight">
+          Divyanshu<span className="text-accent">_</span>Sharma
         </a>
 
         <ul className="hidden gap-7 font-mono text-sm text-text-muted md:flex" role="list">
@@ -64,34 +66,27 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                aria-current={active === l.href ? 'true' : undefined}
-                className={`relative py-1 transition-colors hover:text-text ${
-                  active === l.href ? 'text-pass' : ''
+                aria-current={active === l.href ? 'page' : undefined}
+                className={`relative py-1.5 transition-colors hover:text-white ${
+                  active === l.href ? 'text-accent font-medium' : ''
                 }`}
               >
-                {l.label.toUpperCase()}
+                {l.label}
               </a>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-3">
-          <div
-            className="hidden items-center gap-2 rounded-full border border-border bg-pass-bg px-3 py-1.5 font-mono text-xs text-pass sm:flex"
-            aria-label={`Availability status: ${portfolio.personal.availability}`}
-          >
-            <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-pass shadow-[0_0_0_3px_rgba(95,203,141,0.15)]" aria-hidden="true" />
-            OPEN TO WORK
-          </div>
           <button
             type="button"
-            className="p-2 text-text md:hidden"
+            className="p-2 text-white md:hidden"
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -99,17 +94,16 @@ export default function Navbar() {
       {open && (
         <ul
           id="mobile-nav"
-          ref={menuRef}
-          className="flex flex-col gap-1 border-t border-border bg-bg-soft px-6 py-4 font-mono text-sm md:hidden"
+          className="fixed inset-0 z-[50] flex flex-col w-full border-b border-border bg-bg px-6 py-4 font-mono text-sm md:hidden shadow-2xl"
         >
           {LINKS.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="block rounded-md px-2 py-3 text-text-muted hover:bg-surface hover:text-text"
+                className="block rounded-xl px-4 py-3 text-text-muted hover:bg-accent/10 hover:text-accent transition-colors"
                 onClick={() => setOpen(false)}
               >
-                {l.label.toLowerCase()}
+                {l.label}
               </a>
             </li>
           ))}
