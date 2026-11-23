@@ -6,7 +6,7 @@ const META = [
   { icon: GraduationCap, label: 'Education', value: 'MCA Graduate' },
   { icon: Code2, label: 'Primary', value: 'Python Developer' },
   { icon: Server, label: 'Focus', value: 'Backend / AI-ML' },
-];v
+];
 
 export default function About() {
   return (
